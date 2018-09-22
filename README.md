@@ -5,6 +5,6 @@ This initial version of GenlabJ was written to complete programming exercise 1 i
 
 My eventual plan is to develop this framework so that I can use it to generate human-quality haiku :-). In the meantime instructions on how to use the current framework will follow.
 
-A flock of seagulls
-On a ploughed field; white petals
+A flock of seagulls \
+On a ploughed field; white petals \
 Ruffled by the wind.
