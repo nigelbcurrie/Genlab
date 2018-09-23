@@ -43,9 +43,11 @@ public class GeneticAlgorithm {
     private boolean gatherGenStats;
     private boolean highFitness;
     
-    //private List<ResultData> results = new ArrayList<>();
     private RunStatistics runStats = new RunStatistics();
     
+    /**
+     * Default constructor
+     */
     public GeneticAlgorithm() {
         populationSize = DEFAULT_POPULATION_SIZE;
         chromosomeLength = DEFAULT_CHROMOSOME_LENGTH;
@@ -60,50 +62,104 @@ public class GeneticAlgorithm {
         maxGenerations = Integer.MAX_VALUE;
     }
 
+    /**
+     * Set the initial size of the population
+     * 
+     * @param population the population size
+     * @return this object
+     */
     public GeneticAlgorithm withPopulation(final int population) {
         this.populationSize = population;
         return this;
     }
 
+    /**
+     * Set the chromosome type to be a bit string
+     * 
+     * @param chromosomeLength the length of the chromosome
+     * @return this object
+     */
     public GeneticAlgorithm withBitStringChromosome(final int chromosomeLength) {
         this.chromosomeLength = chromosomeLength;
         chromosomeBuilder = new BitStringChromosomeBuilder(chromosomeLength);
         return this;
     }
 
+    /**
+     * Set the crossover type to be single-point crossover
+     * 
+     * @param crossoverRate the crossover rate
+     * @return this object
+     */
     public GeneticAlgorithm withSinglePointCrossover(final double crossoverRate) {
         this.crossoverRate = crossoverRate;
         this.crossover = new SinglePointCrossover(crossoverRate);
         return this;
     }
 
+    /**
+     * Set the mutation type to be bitwise mutation
+     * 
+     * @param mutationRate the mutation rate
+     * @return this object
+     */
     public GeneticAlgorithm withBitwiseMutation(final double mutationRate) {
         this.mutationRate = mutationRate;
         this.mutator = new BitWiseMutator(mutationRate);
         return this;
     }
 
+    /**
+     * Set the fitness function to use
+     * 
+     * @param fitnessFunc the fitness function
+     * @return this object
+     */
     public GeneticAlgorithm withFitnessFunction(final Function<Chromosome, Integer> fitnessFunc) {
         this.fitnessFunc = fitnessFunc;
         return this;
     }
 
+    /**
+     * Set the number of runs, i.e. how many times to repeat the experiment
+     * 
+     * @param numberOfRuns the number of runs
+     * @return this object
+     */
     public GeneticAlgorithm withRuns(final int numberOfRuns) {
         this.numberOfRuns = numberOfRuns;
         return this;
     }
     
+    /**
+     * Set how many generations the algorithm will evolve for. If you don't limit the 
+     * number of generations, the algorithm will run until there's been no change in best fitness 
+     * for 10,000 generations.
+     * 
+     * @param maxGenerations the number of generations
+     * @param gatherStats whether the gather statistics for each generation
+     * @return this object
+     */
     public GeneticAlgorithm withGenerations(final int maxGenerations, final boolean gatherStats) {
         this.maxGenerations = maxGenerations;
         this.gatherGenStats = gatherStats;
         return this;
     }
     
+    /**
+     * By default the algorithm assumes that best fitness tends to zero. This will switch that 
+     * logic so that higher fitness values are better.
+     * 
+     * @return this object
+     */
     public GeneticAlgorithm withHighFitness() {
         highFitness = true;
         return this;
     }
     
+    /**
+     * Start the algorithm
+     */
     public void start() { 
         System.out.println("Starting genetic algorithm...");     
         for (int i = 0; i < numberOfRuns; i++) {
@@ -124,7 +180,7 @@ public class GeneticAlgorithm {
                 }); 
 
                 int bestFitness = (highFitness) 
-                        ? currentPopulation.stream().mapToInt(Chromosome::getFitness).min().getAsInt() 
+                        ? currentPopulation.stream().mapToInt(Chromosome::getFitness).max().getAsInt() 
                         : currentPopulation.stream().mapToInt(Chromosome::getFitness).min().getAsInt();
                 
                 boolean fitnessHasChanged = (highFitness) ? bestFitness > currentBestFitness : bestFitness < currentBestFitness;
@@ -189,11 +245,16 @@ public class GeneticAlgorithm {
         });*/
     }
     
+    /**
+     * Get the statistics for each run
+     * 
+     * @return the run statistics
+     */
     public RunStatistics getRunStatistics() {
         return runStats;
     }
     
-    public void printCurrentPopulation() {
+    private void printCurrentPopulation() {
         System.out.println("Current Population");
         if (currentPopulation != null) {
             currentPopulation.stream().forEach((chromosome) -> {
@@ -203,7 +264,7 @@ public class GeneticAlgorithm {
         System.out.println();
     }
     
-    public void print(final String label, final List<ChromosomePair> pairs) {
+    private void print(final String label, final List<ChromosomePair> pairs) {
         System.out.println(label);
         pairs.stream().forEach((pair) -> {
             System.out.println(pair.toString());
@@ -211,7 +272,7 @@ public class GeneticAlgorithm {
         System.out.println();
     }
     
-    public void print(final List<Chromosome> chromosomes, final String label) {
+    private void print(final List<Chromosome> chromosomes, final String label) {
         System.out.println(label);
         chromosomes.stream().forEach((c) -> {
             System.out.println(c.toString());
@@ -219,7 +280,7 @@ public class GeneticAlgorithm {
         System.out.println();
     }
     
-    public static Integer calculateFitness(final Chromosome chromosome) {
+    private static Integer calculateFitness(final Chromosome chromosome) {
         return 20 - chromosome.cumulativeValue();
     }
 

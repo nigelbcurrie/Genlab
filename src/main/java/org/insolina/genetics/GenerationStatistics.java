@@ -6,7 +6,6 @@
 
 package org.insolina.genetics;
 
-import org.insolina.genetics.PlotData;
 import java.util.ArrayList;
 import java.util.List;
 
