@@ -28,7 +28,7 @@ public class GenerationStatistics {
         return new GenData();
     }
     
-    public int getGenDateCount() {
+    public int getGenDataCount() {
         return genDataList.size();
     }
     

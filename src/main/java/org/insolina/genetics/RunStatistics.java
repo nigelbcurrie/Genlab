@@ -29,7 +29,7 @@ public class RunStatistics {
         return new RunData();
     }
     
-    public int getRunDateCount() {
+    public int getRunDataCount() {
         return runDataList.size();
     }
 
