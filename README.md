@@ -18,7 +18,7 @@ alg.start();
 
 By default the algorithm will perform the task described here:
 
->Implement a simple GA with fitness-proportionate selection, roulette-wheel sampling, population size 100, single-point crossover >rate pc = 0.7, and bitwise mutation rate pm = 0.001. Try it on the following fitness function: f(x) = number of ones in x, where x >is a chromosome of length 20.
+>Implement a simple GA with fitness-proportionate selection, roulette-wheel sampling, population size 100, single-point crossover rate pc = 0.7, and bitwise mutation rate pm = 0.001. Try it on the following fitness function: f(x) = number of ones in x, where x is a chromosome of length 20.
 >        
 >Perform 20 runs, and measure the average generation at which the string of all ones is discovered.
 
