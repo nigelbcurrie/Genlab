@@ -7,7 +7,7 @@ My eventual plan is to develop this framework so that I can use it to generate h
 
 _A flock of seagulls \
 On a ploughed field; white petals \
-Ruffled by the wind._
+Stirred by the wind._
 
 ## Running the algorithm
 
@@ -37,6 +37,8 @@ Plotter plt1 = new Plotter("Generation at which best fitness was found", "Run", 
 plt1.plot(plotData1.xData, plotData1.yData, "Best fitness", "bo-");
 plt1.show();
 ```
+![Example 1](/images/GenlabJ_Example1.png)
+
 ## Changing the parameters of the algorithm
 
 There are builder methods to set the algorithm parameters explicitly. The following code runs the same algorithm as above, but with the parameters set explicitly:
