@@ -37,7 +37,7 @@ Plotter plt1 = new Plotter("Generation at which best fitness was found", "Run", 
 plt1.plot(plotData1.xData, plotData1.yData, "Best fitness", "bo-");
 plt1.show();
 ```
-![Example 1](/images/GenlabJ_Example1.png)
+![Example 1](/images/GenlabJ_Example.png)
 
 ## Changing the parameters of the algorithm
 
