@@ -14,14 +14,14 @@ public class ChromosomePair {
     public Chromosome c2;
     public int length;
 
-    ChromosomePair(final Chromosome parentOne, final Chromosome parentTwo) {
+    public ChromosomePair(final Chromosome parentOne, final Chromosome parentTwo) {
         this.c1 = parentOne;
         this.c2 = parentTwo;
         
-        this.length = Math.min(parentOne.getLength(), parentTwo.getLength());
+        this.length = Math.min(parentOne.getCrossoverLength(), parentTwo.getCrossoverLength());
     }
 
-    ChromosomePair crossover(final int crossoverPoint) {
+    public ChromosomePair crossover(final int crossoverPoint) {
         return c1.crossover(c2, crossoverPoint);
     }
     

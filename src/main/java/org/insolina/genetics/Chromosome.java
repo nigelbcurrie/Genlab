@@ -14,7 +14,8 @@ public interface Chromosome {
     void setFitness(int fitness);
     int getFitness();
     void incrementSelectionCount();
-    int getLength();
+    int getCrossoverLength();
+    int getMutationLength();
     ChromosomePair crossover(Chromosome other, int crossoverPoint);
     void mutateAt(int mutationPosition);
     int intValue();

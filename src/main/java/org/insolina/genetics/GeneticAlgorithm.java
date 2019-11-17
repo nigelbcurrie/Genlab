@@ -158,6 +158,39 @@ public class GeneticAlgorithm {
     }
     
     /**
+     * Set the chromosome builder for this algorithm
+     * 
+     * @param chromosomeBuilder the chromosome builder
+     * @return this object
+     */
+    public GeneticAlgorithm withChromosomeBuilder(final ChromosomeBuilder chromosomeBuilder) {
+        this.chromosomeBuilder = chromosomeBuilder;
+        return this;
+    }
+    
+    /**
+     * Set the crossover for this algorithm
+     * 
+     * @param crossover the crossover
+     * @return this object
+     */
+    public GeneticAlgorithm withCrossover(final Crossover crossover) {
+        this.crossover = crossover;
+        return this;
+    }
+    
+    /**
+     * Set the mutator for this algorithm 
+     * 
+     * @param mutator the mutator
+     * @return this object
+     */
+    public GeneticAlgorithm withMutator(final Mutator mutator) {
+        this.mutator = mutator;
+        return this;
+    }
+    
+    /**
      * Start the algorithm
      */
     public void start() { 

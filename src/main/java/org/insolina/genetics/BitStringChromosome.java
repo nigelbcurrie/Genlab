@@ -63,8 +63,7 @@ public class BitStringChromosome implements Chromosome {
         selectionCount++;
     }
 
-    @Override
-    public int getLength() {
+    private int getLength() {
         return length;
     }
 
@@ -104,5 +103,15 @@ public class BitStringChromosome implements Chromosome {
     @Override
     public int intValue() {
         return bitString.intValue();
+    }
+
+    @Override
+    public int getCrossoverLength() {
+        return getLength();
+    }
+
+    @Override
+    public int getMutationLength() {
+        return getLength();
     }
 }

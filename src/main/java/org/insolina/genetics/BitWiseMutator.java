@@ -26,7 +26,7 @@ class BitWiseMutator implements Mutator {
             return;
         }
         
-        int mutationPosition = ThreadLocalRandom.current().nextInt(0, child.getLength());
+        int mutationPosition = ThreadLocalRandom.current().nextInt(0, child.getMutationLength());
         child.mutateAt(mutationPosition);
     }
 
