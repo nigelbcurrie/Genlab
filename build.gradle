@@ -14,6 +14,9 @@ plugins {
 dependencies {
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+    
+    compile group: "org.apache.opennlp", name: "opennlp-tools", version: "1.9.2"
+    compile group:'org.xerial', name:'sqlite-jdbc', version:'3.27.2.1'
 }
 
 // In this section you declare where to find the dependencies of your project

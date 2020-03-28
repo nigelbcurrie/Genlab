@@ -24,9 +24,6 @@ public class GeneticAlgorithm {
     private final static int MAX_GENERATIONS_WITH_NO_CHANGE = 10000;
     
     private int populationSize;
-    private int chromosomeLength;
-    private double crossoverRate;
-    private double mutationRate;
     private int numberOfRuns;
     
     private ChromosomeBuilder chromosomeBuilder;
@@ -50,9 +47,6 @@ public class GeneticAlgorithm {
      */
     public GeneticAlgorithm() {
         populationSize = DEFAULT_POPULATION_SIZE;
-        chromosomeLength = DEFAULT_CHROMOSOME_LENGTH;
-        crossoverRate = DEFAULT_CROSSOVER_RATE;
-        mutationRate = DEFAULT_MUTATION_RATE;
         numberOfRuns = DEFAULT_NUMBER_OF_RUNS;
                 
         sampler = new RouletteWheelSampler();
@@ -80,19 +74,17 @@ public class GeneticAlgorithm {
      * @return this object
      */
     public GeneticAlgorithm withBitStringChromosome(final int chromosomeLength) {
-        this.chromosomeLength = chromosomeLength;
         chromosomeBuilder = new BitStringChromosomeBuilder(chromosomeLength);
         return this;
     }
-
-    /**
+    
+     /**
      * Set the crossover type to be single-point crossover
      * 
      * @param crossoverRate the crossover rate
      * @return this object
      */
     public GeneticAlgorithm withSinglePointCrossover(final double crossoverRate) {
-        this.crossoverRate = crossoverRate;
         this.crossover = new SinglePointCrossover(crossoverRate);
         return this;
     }
@@ -104,7 +96,6 @@ public class GeneticAlgorithm {
      * @return this object
      */
     public GeneticAlgorithm withBitwiseMutation(final double mutationRate) {
-        this.mutationRate = mutationRate;
         this.mutator = new BitWiseMutator(mutationRate);
         return this;
     }

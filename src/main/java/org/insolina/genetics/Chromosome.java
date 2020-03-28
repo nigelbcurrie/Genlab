@@ -9,7 +9,7 @@ package org.insolina.genetics;
  *
  * @author nigel_2
  */
-public interface Chromosome {
+public interface Chromosome {  
     int cumulativeValue();   
     void setFitness(int fitness);
     int getFitness();
