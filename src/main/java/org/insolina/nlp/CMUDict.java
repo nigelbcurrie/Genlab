@@ -43,7 +43,7 @@ public class CMUDict {
      */
     private CMUDict() {
         ds = new SQLiteDataSource();
-        ds.setUrl(Config.getString("cmudict.jdbc.url"));
+        ds.setUrl(Config.getString("nlp.cmudict.jdbc.url"));
     }
     
     /**

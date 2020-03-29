@@ -25,7 +25,7 @@ import java.util.List;
  * @author Nigel Currie
  */
 public class BrownCorpus {
-    private final String corpusLocation = Config.getString("brown.corpus.location");
+    private final String corpusLocation = Config.getString("nlp.corpora.locations.brown");
     private final TaggedCorpusReader reader;
     
     /**
