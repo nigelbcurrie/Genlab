@@ -12,8 +12,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Configuration for all insolina classes. Currently using Toml for the config file, just to 
@@ -80,5 +78,73 @@ public class Config {
         }
         
         return null;
+    }
+    
+    /**
+     * Get a string config attribute
+     * 
+     * @param name the name of the attribute
+     * @param def the default value
+     * @return the property value
+     */
+    public static String getString(final String name, final String def) {
+        Config config = Config.get();
+        Object property = config.toml.getOrDefault(name, def);
+        if (property != null) {
+            return property.toString();
+        }
+        
+        return def;
+    }
+    
+    /**
+     * Get a long config attribute
+     * 
+     * @param name the name of the attribute
+     * @param def the default value
+     * @return the property value
+     */
+    public static long getLong(final String name, final long def) {
+        Config config = Config.get();
+        Object property = config.toml.getOrDefault(name, (Long) def);
+        if (property instanceof Long) {
+            return (Long) property;
+        }
+        
+        return def;
+    }
+    
+    /**
+     * Get a boolean config attribute
+     * 
+     * @param name the name of the attribute
+     * @param def the default value
+     * @return the property value
+     */
+    public static boolean getBool(final String name, final boolean def) {
+        Config config = Config.get();
+        Object property = config.toml.getOrDefault(name, (Boolean) def);
+        if (property instanceof Boolean) {
+            return (Boolean) property;
+        }
+        
+        return def;
+    }
+    
+    /**
+     * Get a double config attribute
+     * 
+     * @param name the name of the attribute
+     * @param def the default value
+     * @return the property value
+     */
+    public static double getDouble(final String name, final double def) {
+        Config config = Config.get();
+        Object property = config.toml.getOrDefault(name, (Double) def);
+        if (property instanceof Double) {
+            return (Double) property;
+        }
+        
+        return def;
     }
 }
